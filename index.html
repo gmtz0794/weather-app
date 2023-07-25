@@ -11,13 +11,18 @@
     <h1>Weather App</h1>
   </header>
   <main>
+    <form id="weather-form">
+      <label for="city-input">Enter City:</label>
+      <input type="text" id="city-input" required>
+      <button class="submitBtn" type="submit">Get Weather & Air Quality</button>
+    </form> 
     <div class="location">
       <h2 class="currentCity">City Name, Country</h2>
       <p>Last Updated: <span class="last-updated">...</span></p>
     </div>
     <div class="weather">
       <div class="current-weather">
-        <h3>Current Weather</h3>
+        <h3 >Current Weather</h3>
         <p>Temperature: <span class="temperature">...</span></p>
         <p>Weather Description: <span class="description">...</span></p>
         <!-- Add more weather information here, e.g., humidity, wind speed, etc. -->
@@ -27,10 +32,16 @@
         <!-- Add forecast data here -->
       </div>
     </div>
+    <div id="air-quality">
+      <h3>Air Quality</h3>
+      <p>AQI: <span class="aqi">...</span></p>
+      <!-- Add more air quality information here, e.g., pollutant levels, etc. -->
+    </div>
   </main>
   <footer>
     <p>&copy; 2023 Weather App</p>
   </footer>
+  <script src="./assets/js/airquality.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 </html>
