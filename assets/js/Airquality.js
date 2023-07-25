@@ -19,10 +19,34 @@ const fetchAirQualityData = async (city) => {
 
 // Function to display air quality information on the page
 const displayAirQuality = (airQualityData) => {
+  // Clear previous air quality data except AQI
+  const pmDataElements = airQualityContainer.querySelectorAll('.pm-data');
+  pmDataElements.forEach((element) => element.remove());
+
   if (airQualityData && airQualityData.data) {
     const aqi = airQualityData.data.aqi;
-    airQualityContainer.querySelector('.aqi').textContent = aqi;
-    // Add more air quality information here, e.g., pollutant levels, etc.
+    airQualityContainer.querySelector('.aqi').textContent = `AQI: ${aqi}`;
+
+    // Display other pollutant levels if available
+    if (airQualityData.data.iaqi.pm25) {
+      const pm25 = airQualityData.data.iaqi.pm25.v;
+      const pm25Element = document.createElement('p');
+      pm25Element.textContent = `PM2.5: ${pm25} µg/m³`;
+      pm25Element.classList.add('pm-data');
+      airQualityContainer.appendChild(pm25Element);
+    }
+
+    if (airQualityData.data.iaqi.pm10) {
+      const pm10 = airQualityData.data.iaqi.pm10.v;
+      const pm10Element = document.createElement('p');
+      pm10Element.textContent = `PM10: ${pm10} µg/m³`;
+      pm10Element.classList.add('pm-data');
+      airQualityContainer.appendChild(pm10Element);
+    }
+
+    // Add more elements for other pollutant levels as needed
+    // For example, you can add elements for NO2, O3, SO2, etc.
+
   } else {
     airQualityContainer.innerHTML = 'Air quality data not available.';
   }
