@@ -24,16 +24,20 @@ let weather = {
         document.querySelector(".temperature").innerHTML=temp_f + " F"
         document.querySelector(".wind").innerHTML=wind_mph + " MPH"
         document.querySelector(".humidity").innerHTML=humidity + " %"
+        // Adds the last name and country to localstorage
+        localStorage.setItem("last-updated", name+", "+country)
     },
     // Function to grab input value and add it to another function
-    find: function() {
+    grab: function() {
      this.grabWeather(document.querySelector("#city-input").value)
+     // Pulls the saved data from localstorage to display on page
+     document.querySelector(".last-updated").innerHTML= localStorage.getItem("last-updated")
     }
 };  
 
-// Adds eventlistener function to the selected button. When button is clicked the function inside is called.
+// Adds eventlistener function to the
 document.querySelector(".submitBtn").addEventListener("click", function(){
-  weather.find();
+  weather.grab();
 }) 
 
 // Function to display forecast
