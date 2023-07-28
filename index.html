@@ -15,18 +15,19 @@
         <form id="weather-form" class="flex items-center justify-center mb-4 pb-16 pt-6">
             <label for="city-input" class="mr-2 text-lg">Enter City:</label>
             <input type="text" id="city-input" required class="border rounded px-2 py-1">
-            <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-500">Get Weather & Air Quality</button>
+            <button type="submit" class="submitBtn bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-500">Get Weather & Air Quality</button>
         </form>
         <div class="card border rounded-md pr-4 pl-4 pt-2 pb-2 bg-gray-300">
             <div class="location text-center mb-4">
-                <h2 class="text-2xl font-semibold">City Name, Country</h2>
+                <h2 class="currentCity text-2xl font-semibold">City Name, Country</h2>
                 <p>Last Updated: <span class="last-updated">...</span></p>
             </div>
             <div class="weather grid grid-cols-2 gap-4">
                 <div class="current-weather">
                     <h3 class="text-xl font-semibold">Current Weather</h3>
                     <p>Temperature: <span class="temperature">...</span></p>
-                    <p>Weather Description: <span class="description">...</span></p>
+                    <p>Wind: <span class="wind">...</span></p>
+                    <p>Humidity: <span class="humidity">...</span></p>
                     <!-- Add more weather information here, e.g., humidity, wind speed, etc. -->
                 </div>
                 <div class="forecast">
