@@ -1,10 +1,8 @@
 // Get references to the elements on the page
 const cityInput = document.querySelector('#city-input');
-// const weatherInfoContainer = document.querySelector('#weather-info');
 const airQualityContainer = document.querySelector('#air-quality');
 
-// API keys for weather and air quality APIs
-// const weatherApiKey = 'YOUR_WEATHER_API_KEY';
+// API key for the air quality API
 const airQualityApiKey = '633bb82208f93a5f0a8409af99aa77ce180a2c4e';
 
 // Function to fetch air quality data from the air quality API
@@ -21,8 +19,37 @@ const fetchAirQualityData = async (city) => {
 
 // Function to display air quality information on the page
 const displayAirQuality = (airQualityData) => {
-  // Update the airQualityContainer with the air quality data
-  // Add code to display AQI, pollutant levels, etc.
+  // Clear previous air quality data except AQI
+  const pmDataElements = airQualityContainer.querySelectorAll('.pm-data');
+  pmDataElements.forEach((element) => element.remove());
+
+  if (airQualityData && airQualityData.data) {
+    const aqi = airQualityData.data.aqi;
+    airQualityContainer.querySelector('.aqi').textContent = `AQI: ${aqi}`;
+
+    // Display other pollutant levels if available
+    if (airQualityData.data.iaqi.pm25) {
+      const pm25 = airQualityData.data.iaqi.pm25.v;
+      const pm25Element = document.createElement('p');
+      pm25Element.textContent = `PM2.5: ${pm25} µg/m³`;
+      pm25Element.classList.add('pm-data');
+      airQualityContainer.appendChild(pm25Element);
+    }
+
+    if (airQualityData.data.iaqi.pm10) {
+      const pm10 = airQualityData.data.iaqi.pm10.v;
+      const pm10Element = document.createElement('p');
+      pm10Element.textContent = `PM10: ${pm10} µg/m³`;
+      pm10Element.classList.add('pm-data');
+      airQualityContainer.appendChild(pm10Element);
+    }
+
+    // Add more elements for other pollutant levels as needed
+    // For example, you can add elements for NO2, O3, SO2, etc.
+
+  } else {
+    airQualityContainer.innerHTML = 'Air quality data not available.';
+  }
 };
 
 // Function to handle form submission
@@ -31,15 +58,7 @@ const formSubmitHandler = async (event) => {
   const city = cityInput.value.trim();
 
   if (city) {
-    // const weatherData = await fetchWeatherData(city); // Commented out weather-related code
-
     const airQualityData = await fetchAirQualityData(city);
-
-    // if (weatherData) {
-    //   displayWeatherInfo(weatherData); // Commented out weather-related code
-    // } else {
-    //   weatherInfoContainer.innerHTML = 'Weather data not available.'; // Commented out weather-related code
-    // }
 
     if (airQualityData) {
       displayAirQuality(airQualityData);
@@ -47,7 +66,6 @@ const formSubmitHandler = async (event) => {
       airQualityContainer.innerHTML = 'Air quality data not available.';
     }
   } else {
-    // weatherInfoContainer.innerHTML = 'Please enter a city name.'; // Commented out weather-related code
     airQualityContainer.innerHTML = '';
   }
 };
