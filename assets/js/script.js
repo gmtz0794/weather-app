@@ -20,6 +20,9 @@ let weather = {
         var { wind_mph }= data.current
         var { humidity} = data.current
         console.log(name, country, temp_f,)
+
+        localStorage.setItem("last-updated", name+", "+country)
+
         document.querySelector(".currentCity").innerHTML= name + ", " + country
         document.querySelector(".temperature").innerHTML=temp_f + " F"
         document.querySelector(".wind").innerHTML=wind_mph + " MPH"
