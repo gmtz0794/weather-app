@@ -64,5 +64,3 @@ function forecastDisplay(data) {
         forecastContainer.appendChild(dayElement);
     }
 }
-
-
