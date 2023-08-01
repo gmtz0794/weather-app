@@ -39,11 +39,15 @@ let weather = {
     const x = document.querySelector("#city-input").value
         if (x === ""){
             document.querySelector(".currentCity").innerHTML= "Please Enter A City"
-        } else (this.weatherDisplay === 400)
-            document.querySelector(".currentCity").innerHTML= "Please Enter A City"
+            document.querySelector(".temperature").innerHTML="..."
+            document.querySelector(".wind").innerHTML="..."
+            document.querySelector(".humidity").innerHTML="..." 
+        } else if (this.weatherDisplay !== 400) {
+            document.querySelector(".currentCity").innerHTML= "Invalid City, Please Enter A City"
             document.querySelector(".temperature").innerHTML="City Not Found"
             document.querySelector(".wind").innerHTML="City Not Found"
-            document.querySelector(".humidity").innerHTML="City Not Found"
+            document.querySelector(".humidity").innerHTML="City Not Found" 
+        }
     }
 };  
 
