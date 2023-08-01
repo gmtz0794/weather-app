@@ -4,11 +4,11 @@ let weather = {
     // Sets api key to a property that can be referenced
     apiKey: "5f08a7e3ed8b4d6680d35453232107",
     grabWeather: function (city) {
-        fetch("http://api.weatherapi.com/v1/current.json?key="+this.apiKey+"&q=" + city +"&aqi=no")
+        fetch("https://api.weatherapi.com/v1/current.json?key="+this.apiKey+"&q=" + city +"&aqi=no")
             .then((response) => response.json())
             .then((data) => this.weatherDisplay(data));
     
-        fetch("http://api.weatherapi.com/v1/forecast.json?key="+this.apiKey+"&q=" + city +"&days=3")
+        fetch("https://api.weatherapi.com/v1/forecast.json?key="+this.apiKey+"&q=" + city +"&days=3")
             .then((response) => response.json())
             .then((data) => forecastDisplay(data));
     },
