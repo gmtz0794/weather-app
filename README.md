@@ -9,7 +9,8 @@ How's My Weather is an application that enables the easy access to simplified we
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
-- [License](license)
+- [License](#license)
+- [Github Links](#githublinks)
 
 ## Installation
 
