@@ -30,3 +30,8 @@ When entering the website, users will be presented with a single page weather ap
 ## License
 
 How's My Weather is released under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license. Refer to the LICENSE file for more information.
+
+## Github Links
+
+- Github Repository: https://github.com/gmtz0794/weather-app.git
+- Github Deployed Application: https://gmtz0794.github.io/weather-app/
