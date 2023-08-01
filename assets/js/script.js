@@ -32,12 +32,25 @@ let weather = {
      this.grabWeather(document.querySelector("#city-input").value)
      // Pulls the saved data from localstorage to display on page
      document.querySelector(".last-updated").innerHTML= localStorage.getItem("last-updated")
+    },
+
+    // Function checks input and displays message to respond accordingly if user input is empty or not valid
+    validateForm: function(){
+    const x = document.querySelector("#city-input").value
+        if (x === ""){
+            document.querySelector(".currentCity").innerHTML= "Please Enter A City"
+        } else (this.weatherDisplay === 400)
+            document.querySelector(".currentCity").innerHTML= "Please Enter A City"
+            document.querySelector(".temperature").innerHTML="City Not Found"
+            document.querySelector(".wind").innerHTML="City Not Found"
+            document.querySelector(".humidity").innerHTML="City Not Found"
     }
 };  
 
 // Adds eventlistener function to the
 document.querySelector(".submitBtn").addEventListener("click", function(){
   weather.grab();
+  weather. validateForm();
 }) 
 
 // Function to display forecast
